@@ -26,4 +26,4 @@ ticketSchema.index({id:1, user:1});
 
 const Ticket = mongoose.model('Tickect', ticketSchema);
 
-export default Ticke;
+export default Ticket;
