@@ -48,16 +48,15 @@ mongodb://localhost:27017
 Asegúrate de que MongoDB esté corriendo antes de conectar.
 
 ## 🛠️ Comandos útiles de MongoDB
-
-Insertar uno	db.coleccion.insertOne({})
-Insertar muchos	db.coleccion.insertMany([{},{},...])
-Buscar documentos	db.coleccion.find()
-Buscar con condición	db.coleccion.find({ campo: valor })
-Actualizar documento	db.coleccion.updateOne({}, { $set: {} })
-Eliminar documento	db.coleccion.deleteOne({})
-Eliminar varios docs	db.coleccion.deleteMany({})
-Eliminar colección	db.coleccion.drop()
-Eliminar base de datos	db.dropDatabase()
+- Insertar uno	db.coleccion.insertOne({})
+- Insertar muchos	db.coleccion.insertMany([{},{},...])
+- Buscar documentos	db.coleccion.find()
+- Buscar con condición	db.coleccion.find({ campo: valor })
+- Actualizar documento	db.coleccion.updateOne({}, { $set: {} })
+- Eliminar documento	db.coleccion.deleteOne({})
+- Eliminar varios docs	db.coleccion.deleteMany({})
+- Eliminar colección	db.coleccion.drop()
+- Eliminar base de datos	db.dropDatabase()
 
 ## 📁 Estructura recomendada del proyecto
 
