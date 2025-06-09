@@ -1,0 +1,22 @@
+{
+  "name": "ticketing-system",
+  "version": "1.0.0",
+  "description": "Ticketing system for educational proposes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeByAlbertoMartin/ticketing-system.git"
+  },
+  "author": "Alberto Martín",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codeByAlbertoMartin/ticketing-system/issues"
+  },
+  "homepage": "https://github.com/codeByAlbertoMartin/ticketing-system#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
