@@ -2,8 +2,11 @@
   "name": "ticketing-system",
   "version": "1.0.0",
   "description": "Ticketing system for educational proposes",
+  "type": "module",
   "main": "server.js",
   "scripts": {
+    "start": "NODE_ENV=prod node server.js",
+    "dev": "NODE_ENV=dev node --watch server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +21,9 @@
   "homepage": "https://github.com/codeByAlbertoMartin/ticketing-system#readme",
   "dependencies": {
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.5.0",
+    "morgan": "^1.10.0"
   }
 }
