@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+import userRouters from './routes/usersRoutes.js';
 
 const app = express();
 const DB_URL = process.env.NODE_ENV === "test"
@@ -19,5 +20,5 @@ app.get('/', (req, res) => {
     res.send('Hello, World!');  
 });
 
-
+app.use('/api/users', userRouters); // User routes
 export default app; // Export the app for testing or further configuration
