@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import espress from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -18,20 +19,29 @@ router.post('/signup', async (req, res) => {
         password: req.body.password,
         role: req.body.role 
     });
-    try{
+    try {
         await user.save();
-        const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        return res.header("Authorization").send({ 
-            token, 
-            user: { 
-                name: user.name, 
-                email: user.email, 
-                role: user.role 
-            } 
+        const token = jwt.sign(
+            {
+                id: user._id,
+                role: user.role,
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: '1h',
+            }
+        );
+    
+        res.header("Authorization", token).send({
+            user: {
+                name: user.name,
+                email: user.email,
+                role: user.role
+            },
+            token,
         });
-        
-    }catch(error) {
-        return res.status(500).json({ message: 'Server error' });
+    } catch (error) {
+        res.status(500).send("Something went wrong." + error.message);
     }
 })
 
@@ -50,3 +60,5 @@ router.post('/login', async (req, res) => {
 
     return res.header("Authorization", token).send(token);
 })
+
+export default router;
