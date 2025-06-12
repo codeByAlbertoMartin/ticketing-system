@@ -1,8 +1,8 @@
 POST http://localhost:4000/api/tickets HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzdI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODQ5NzI1NTNjYWM5MTdhMDE1MjgxMzkiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0OTY0Mzg2MSwiZXhwIjoxNzQ5NjQ3NDYxfQ.0FxgXr5LtCYAEPJZhlj0GLGQ-3YtubKv-sqNfzFA3B0
 
 {
-  "title": "Test Ticket",
-  "description": "This is a test ticket created via REST API.",
-  "userId": "5db50b87-081b-442c-9d77-65846b906fdf"
+  "title": "Test Ticket 3",
+  "description": "This is a test 2 Ticket created via REST API."
 }

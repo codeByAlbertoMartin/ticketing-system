@@ -1,5 +1,7 @@
 import express from 'express';
 import Ticket from '../models/Ticket.js';
+import auth from '../middlewares/auth.js';
+import admin from '../middlewares/admin.js';
 
 const router = express.Router();
 
@@ -14,10 +16,10 @@ router.get("/", async (req, res) => {
 })
 
 // POST /api/tickets
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
     console.log("Creating a new ticket with data:", req.body);
-    const ticket = new Ticket({
-        user: req.body.userId, // Assuming user is passed in the request body
+    const ticket = new Ticket({ //req.user._id viene del verified de auth.js
+        user: req.user._id, // Assuming user is passed in the request body
         title: req.body.title,
         description: req.body.description,
         status: req.body.status,
@@ -48,7 +50,7 @@ router.get("/:id", async (req, res) => {
 })
 
 // PUT /api/tickets/:id
-router.put("/:id", async (req, res) => {
+router.put("/:id",auth, async (req, res) => {
     const updates = req.body;
     try{
         const ticket = await Ticket.findOneAndUpdate(
@@ -66,7 +68,7 @@ router.put("/:id", async (req, res) => {
 })
 
 // DELETE /api/tickets/:id
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
     try {
         const ticket = await Ticket.findOneAndDelete({ id: req.params.id });
         if (!ticket) {
