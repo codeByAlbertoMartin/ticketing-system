@@ -2,14 +2,27 @@ import express from 'express';
 import Ticket from '../models/Ticket.js';
 import auth from '../middlewares/auth.js';
 import admin from '../middlewares/admin.js';
+import { parse } from 'dotenv';
 
 const router = express.Router();
 
-//GET /api/tickets
+//GET /api/tickets?pageSize=10&page=1
 router.get("/", async (req, res) => {
+    const pagSize = parseInt(req.query.pageSize) || 10; // Default page size
+    const page = parseInt(req.query.page) || 1; // Default page number
     try{
-        const tickets = await Ticket.find({});
-        res.status(200).json({tickets: tickets});
+        const tickets = await Ticket
+            .find()
+            .skip((page - 1) * pagSize)
+            .limit(pagSize);
+
+        const totalTickets = await Ticket.countDocuments();
+        res.status(200).json({
+            tickets, 
+            page, 
+            pages: Math.ceil(totalTickets / pagSize),
+            currentPage: page
+        });
     }catch(err) {
         res.status(500).json({ message: "Internal Server Error", error: err.message });
     }
