@@ -82,3 +82,8 @@ Se recomienda usar mongosh en lugar del cliente antiguo mongo.
 ## 🧠 Licencia
 MIT
 
+## Instalación para testing
+npm install -D jest supertest babel-jest @babel/core @babel/preset-env joi  
+
+## Instalación para seguridad
+npm install helmet cors compression express-rate-limit
