@@ -2,7 +2,7 @@ import express from 'express';
 import Ticket from '../models/Ticket.js';
 import auth from '../middlewares/auth.js';
 import admin from '../middlewares/admin.js';
-import { parse } from 'dotenv';
+import ticketSchema from '../validations/ticketValidation.js';
 import buildFilter from '../middlewares/filter.js';
 import paginate from '../middlewares/paginate.js';
 
@@ -22,6 +22,11 @@ router.get("/", buildFilter, paginate(Ticket), async (req, res) => {
 //Private (only authenticated users can create tickets)
 //Ticket Schema: { user, title, description, status, priority }
 router.post("/", auth, async (req, res) => {
+    const {error} = ticketSchema.validate(req.body);
+    if (error) {
+        return res.status(400).json({ message: "Validation Error", error: error.details[0].message });
+    }
+
     console.log("Creating a new ticket with data:", req.body);
     const ticket = new Ticket({ //req.user._id viene del verified de auth.js
         user: req.user._id, // Assuming user is passed in the request body

@@ -1,6 +1,6 @@
 POST http://localhost:4000/api/tickets HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODQ4ODE2YWMyNzM4OGRiYjQwNGFlNDAiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0OTcxNDM5NSwiZXhwIjoxNzQ5NzE3OTk1fQ.oUJsev-Z5HnlcFNPK5p8IL-VfRQXkY2gWpHjRcPYVyU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODQ4ODE2YWMyNzM4OGRiYjQwNGFlNDAiLCJyb2xlIjoidXNlciIsImlhdCI6MTc0OTgzNzk4MSwiZXhwIjoxNzQ5ODQxNTgxfQ.BhLJbvedISdaMVS53DKaGLYQNc34cGTmJw5uqb0Fvso
 
 {
   "title": "Test Ticket 11",
