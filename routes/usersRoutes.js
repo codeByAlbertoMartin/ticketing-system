@@ -21,6 +21,7 @@ router.post('/signup', async (req, res) => {
     });
     try {
         await user.save();
+        
         const token = jwt.sign(
             {
                 _id: user._id,
@@ -31,15 +32,19 @@ router.post('/signup', async (req, res) => {
                 expiresIn: '1h',
             }
         );
-    
-        res.header("Authorization", token).send({
-            user: {
-                name: user.name,
-                email: user.email,
-                role: user.role
-            },
-            token,
-        });
+        
+        res
+            .status(201)
+            .header("Authorization", token)
+            .send({
+                user: {
+                    name: user.name,
+                    email: user.email,
+                    role: user.role
+                },
+                token,
+            });
+       
     } catch (error) {
         res.status(500).send("Something went wrong." + error.message);
     }
